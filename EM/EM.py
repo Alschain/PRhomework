@@ -122,11 +122,13 @@ Z = np.zeros((X_matrix.shape[0], K))
 for k in range(K):
     Z[:, k] = gauss_function(X_matrix,mu[k],cov[k])
 
+T = Expectation(X_matrix,mu,cov,tau)
+
 plot_Z = np.zeros((X_matrix.shape[0],1))
 colors = ['r' for i in range(plot_Z.shape[0])]
 for each in range(Z.shape[0]):
-    plot_Z[each] = max(Z[each])
-    colors[each] = 'r' if np.argmax(Z[each]) == 0 else 'b'
+    plot_Z[each] = Z[each][np.argmax(T[each])]
+    colors[each] = 'r' if np.argmax(T[each]) == 0 else 'b'
 
 plt.title("GMM")
 ax.scatter(plot_X, plot_Y, plot_Z, color=colors)
