@@ -1,3 +1,9 @@
 EM/data/
 .vscode
 .DS_Store
+Classification/__pycache__/
+Classification/model/
+Classification/*.jpg
+Classification/cifar-10/
+Classification/data/
+Classification/checkpoint/
