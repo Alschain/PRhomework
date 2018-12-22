@@ -6,3 +6,9 @@ My submit for PR Class
 * EM Algorithm
 * Parzen window
 * KNN
+
+## Image Classification
+
+* Use VGG16, HOG+SVM and XXX in CIFAR-10
+* VGG16 based on [PyTorch-Cifar](https://github.com/kuangliu/pytorch-cifar)
+* Interface with PyQt5
