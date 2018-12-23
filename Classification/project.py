@@ -8,13 +8,12 @@ from VGG16 import vggpredict
 
 classes = {0:'plane', 1:'car', 2:'bird', 3:'cat', 4:'deer', 5:'dog', 6:'frog', 7:'horse', 8:'ship', 9:'truck'}
 
-class Example(QMainWindow):
+class Classification(QMainWindow):
 
     def __init__(self):
         super().__init__()
 
-        
-        self.imagepath = './cifar-10/test/0/0_21.jpg'
+        self.imagepath = './cifar-10/test/9/9_28.jpg'
         self.hogpath = 'hog.jpg'
         self.vggpath = 'vgg.jpg'
         self.lbppath = 'lbp.jpg'
@@ -69,7 +68,7 @@ class Example(QMainWindow):
 
         self.lb5 = QLabel(self)
         self.lb5.setGeometry(600,575,300,20)
-        self.lb5.setFont(QFont('Roman times', 15))
+        self.lb5.setFont(QFont('Roman times', 13))
         self.lb5.setText('Build by Wang, Jiang and Yang. ')
         self.lb5.setAlignment(Qt.AlignRight)
 
@@ -95,6 +94,8 @@ class Example(QMainWindow):
         
         self.setGeometry(100, 100, 900, 600)
         self.setWindowTitle('Image Classification on Cifar-10')
+        self.setWindowFlags(Qt.WindowMinimizeButtonHint)
+        self.setFixedSize(self.width(), self.height())
         self.show()
 
         self.firstOpen()
@@ -163,5 +164,5 @@ class Example(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Example()
+    clscifar = Classification()
     sys.exit(app.exec_())
