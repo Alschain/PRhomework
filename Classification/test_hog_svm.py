@@ -10,7 +10,7 @@ from skimage.io import imread, imsave
 model_folder = 'model'
 model_name = 'hog_svm.model'
 
-def predict(filename):
+def hogsvmpredict(filename):
     img = imread(filename)
     img = transform.resize(img, (32, 32))
     gray = color.rgb2gray(img)

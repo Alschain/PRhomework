@@ -59,7 +59,7 @@ optimizer = optim.SGD(net.parameters(), lr=1e-2, momentum=0.9, weight_decay=5e-4
 
 
 # Training
-def train(epoch):
+def train(epoch, trainloader):
     print('\nEpoch: %d' % epoch)
     net.train()
     train_loss = 0
@@ -81,7 +81,7 @@ def train(epoch):
         progress_bar(batch_idx, len(trainloader), 'Loss: %.3f | Acc: %.3f%% (%d/%d)'
             % (train_loss/(batch_idx+1), 100.*correct/total, correct, total))
 
-def test(epoch):
+def test(epoch, testloader):
     global best_acc
     net.eval()
     test_loss = 0
@@ -122,8 +122,8 @@ def TrainModel():
     testset = torchvision.datasets.CIFAR10(root='./data', train=False, download=False, transform=transform_test)
     testloader = torch.utils.data.DataLoader(testset, batch_size=100, shuffle=False, num_workers=2)
     for epoch in range(start_epoch, start_epoch+200):
-        train(epoch)
-        test(epoch)
+        train(epoch, trainloader)
+        test(epoch, testloader)
         if (epoch + 1) % 5 == 0:
             torch.save(net.state_dict(), 'VGG16params%d.pkl'%(epoch))
 
@@ -140,7 +140,7 @@ def vggpredict(picpath):
     _, predicted = outputs.max(1)
 
     #Save Features
-    selected_layer = 5
+    selected_layer = 3
     features = im
     for index,layer in enumerate(net.features):
         features = layer(features)
