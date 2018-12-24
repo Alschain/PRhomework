@@ -14,9 +14,9 @@ class Classification(QMainWindow):
         super().__init__()
 
         self.imagepath = './cifar-10/test/9/9_28.jpg'
-        self.hogpath = 'hog.jpg'
-        self.vggpath = 'vgg.jpg'
-        self.lbppath = 'lbp.jpg'
+        self.hogpath = './hog.jpg'
+        self.vggpath = './vgg.jpg'
+        self.lbppath = './lbp.jpg'
         self.initUI()
 
 
@@ -94,8 +94,6 @@ class Classification(QMainWindow):
         
         self.setGeometry(100, 100, 900, 600)
         self.setWindowTitle('Image Classification on Cifar-10')
-        self.setWindowFlags(Qt.WindowMinimizeButtonHint)
-        self.setFixedSize(self.width(), self.height())
         self.show()
 
         self.firstOpen()
